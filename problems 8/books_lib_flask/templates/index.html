@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+<head>
+    <title>Library</title>
+
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+</head>
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1>Authors and books</h1>
+        {% for author in shelf_source.keys() %}
+        <h2><a href="{{ url_for('author', name=author) }}">{{ author }}</a></h2>
+        {% for book in shelf_source[author] %}
+        <p> {{ book[0] }} </p>
+        {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}
